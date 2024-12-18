@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        
+        
+        <style>
+            header {
+                background-color: #333;
+                padding: 10px 20px;
+            }
+
+            .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                color: #fff;
+                font-size: 24px;
+                margin: 0;
+            }
+
+            nav {
+                position: relative;
+            }
+
+            #menu {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #menu li {
+                margin-right: 20px;
+            }
+
+            #menu a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 18px;
+                padding: 10px;
+                transition: color 0.3s;
+            }
+
+            #menu a:hover {
+                color: #ff5e57;
+            }
+
+
+            .menu-icon {
+                display: none;
+                font-size: 30px;
+                cursor: pointer;
+            }
+
+
+            @media screen and (max-width: 768px) {
+                #menu {
+                    position: absolute;
+                    top: 50px;
+                    right: 0;
+                    background-color: #333;
+                    width: 200px;
+                    display: none;
+                    flex-direction: column;
+                    padding: 10px 0;
+                }
+
+                #menu li {
+                    margin: 10px 0;
+                }
+
+                .menu-icon {
+                    display: block;
+                }
+
+                #menu.active {
+                    display: flex;
+                }
+            }
+
+            #menu li.active a {
+                color: #090808;
+            }
+
+
+            .scroll-container1 {
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                background: #f8f8f8;
+            }
+
+            .scroll-content1 {
+                display: flex;
+                animation: scroll 15s linear infinite;
+                width: calc(100% * 2); 
+            }
+
+
+            .recipe-card1 {
+                min-width: 300px; 
+                margin: 10px;
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .recipe-card1 img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .recipe-card1 h2 {
+                padding: 10px;
+                font-size: 18px;
+                color: #333;
+            }
+
+
+            .recipe-card1 {
+                min-width: 300px;
+                margin: 10px;
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                overflow: hidden;
+                transition: background-color 0.5s, transform 0.3s, color 0.5s;
+            }
+
+            .recipe-card1 img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .recipe-card1 h2 {
+                padding: 10px;
+                font-size: 18px;
+                color: #333;
+                transition: color 0.5s; 
+            }
+
+            .recipe-card1:hover {
+                background-color: #ff5e57; 
+                transform: scale(1.05); 
+                color: #fff; 
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .recipe-card1:hover h2 {
+                color: #fff; 
+            }
+
+            .recipe-card1:hover img {
+                filter: brightness(0.8); 
+            }
+
+
+            .contact {
+                padding: 50px 20px;
+                background-color: #f8f9fa;
+                text-align: center;
+            }
+
+            .contact h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            #contact-form {
+                max-width: 500px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            #contact-form input,
+            #contact-form textarea {
+                padding: 10px;
+                font-size: 1rem;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            #contact-form button {
+                padding: 10px;
+                font-size: 1rem;
+                background-color: #ff5e57;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            #contact-form button:hover {
+                background-color: #e0433f;
+            }
+
+            #otp {
+                display: none;
+            }
+
+            @keyframes scroll {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+        </style>
+        <title>Riya ka website</title>
+    </head>
+    <body>
+       <!-- <header>
+        <div class="cotainer">
+            <h1 class="logo">Delicious Recipe</h1>
+            <nav>
+                <div class="menu-icon">&#9776;</div>
+              <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Recipes</li>
+                <li>Contact</li>
+              </ul>  
+            </nav>
+            </div>
+        </div>
+       </header>  -->
+       <header>
+        <div class="container">
+            <h1 class="logo">Delicious Recipe</h1>
+            <nav>
+                <div class="menu-icon" id="menu-icon">&#9776;</div>
+                <ul id="menu">
+                    <li><a href="#homee">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#recipee">Recipes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>  
+            </nav>
+        </div>
+    </header>
+    
+
+       <section class="hero">
+        <div class="hero-section" id="homee">
+            <h2>Welcome to our Recipe Collection !</h2>
+            <p>Search mouth watering recipes to satisfy your craving.</p>
+            <!-- <form action="#" class="search-box">
+                <input type="text" placeholder="search recipe">
+                <button type="submit">search</button>
+            </form> -->
+            <form id="imageSearchForm" class="search-box" target="_blank">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search for images..." 
+                    autocomplete="off"
+                />
+                <button type="submit" id="searchButton">Search Foods</button>
+            </form>
+            
+            <p id="queryDisplay" style="text-align:center; font-size:1rem; color: #444; margin-top: 10px;"></p>
+                  
+            
+        </div>
+       </section>
+
+
+       <section class="recipes1" id="about">
+        <h2 style="text-align: center;">Featured Recipes</h2>
+        <div class="scroll-container1">
+            <div class="scroll-content1">
+                <div class="recipe-card1">
+                    <img src="https://th.bing.com/th/id/OIP.-ndMbbnDa5vPzgLYrBbLMgHaE7?w=285&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                    <h2>Paneer Tikka</h2>
+                </div>
+                <div class="recipe-card1">
+                    <img src="https://th.bing.com/th/id/OIP.fUV8cTmCx4JDtVjoUG_r3QHaLH?w=204&h=306&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                    <h2>Pasta</h2>
+                </div>
+                <div class="recipe-card1">
+                    <img src="https://th.bing.com/th/id/OIP._tgM80_g7K1ymkC1gpvxZAHaE8?rs=1&pid=ImgDetMain" alt="">
+                    <h2>Momos</h2>
+                </div>
+                <div class="recipe-card1">
+                    <img src="https://en-media.thebetterindia.com/uploads/2022/08/294156779_1082267416022212_8006411537588067133_n-1_11zon-1660981126.jpg" alt="">
+                    <h2>Chole Bhature</h2>
+                </div>
+                <div class="recipe-card1">
+                    <img src="https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg?quality=90&resize=440,400" alt="">
+                    <h2>Butter Chicken</h2>
+                </div>
+                
+                <div class="recipe-card1">
+                    <img src="https://th.bing.com/th/id/OIP.-ndMbbnDa5vPzgLYrBbLMgHaE7?w=285&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                    <h2>Paneer Tikka</h2>
+                </div>
+                <div class="recipe-card1">
+                    <img src="https://th.bing.com/th/id/OIP.fUV8cTmCx4JDtVjoUG_r3QHaLH?w=204&h=306&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                    <h2>Pasta</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recipes" id="recipee">
+        <h2>Featured Recipes</h2>
+        <div class="recipe-section" id="recipe1">
+            <div class="recipe-card">
+                <img src="https://th.bing.com/th/id/OIP.-ndMbbnDa5vPzgLYrBbLMgHaE7?w=285&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                <h2>Paneer Tikka</h2>
+                <P>Paneer Tikka is a popular and delicious tandoori starter and snack where Paneer (Indian cottage cheese cubes) are marinated in a spiced yogurt-based marinade, arranged on skewers and grilled in the oven.</P>
+                <!-- <a href="#"> View recipe </a> -->
+            </diV>
+            <div class="recipe-card" id="recipe2">
+                <img src ="https://th.bing.com/th/id/OIP.fUV8cTmCx4JDtVjoUG_r3QHaLH?w=204&h=306&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+                <h2>pasta </h2>
+                <p> pasta is a type of food typically made from an unleavened dough of wheat flour mixed with water or eggs, and formed into sheets or other shapes, then cooked by boiling or baking.</p>
+            </div>
+            <div class="recipe-card" id="recipe3">
+                <img src="https://th.bing.com/th/id/OIP._tgM80_g7K1ymkC1gpvxZAHaE8?rs=1&pid=ImgDetMain" alt="">
+                <h2>Momos</h2>
+                <P>Momos are a type of steamed filled dumpling in Tibetan[1] and Nepali cuisine[2] that is also popular in neighbouring Bhutan, Bangladesh, and India</P>
+                <!-- <a href="#"> View recipe </a> -->
+             </div>
+            <div class="recipe-card" id="recipe4">
+                <img src="https://en-media.thebetterindia.com/uploads/2022/08/294156779_1082267416022212_8006411537588067133_n-1_11zon-1660981126.jpg" alt="">
+                <h2>Chole Bhature</h2>
+                <P>Chana Bhatura is a spicy, tasty and a filling dish. I have eaten this dish at many places in Punjab and Delhi. Each restaurants or dhaba (eateries on highways) have their own flavors and taste in the chickpea curry.</P>
+                <!-- <a href="#"> View recipe </a> -->
+            </div>
+            <div class="recipe-card" id="recipe5">
+                <img src="https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg?quality=90&resize=440,400"alt="">
+                <h2>Butter Chicken</h2>
+                <P>Butter Chicken has a smooth, rich and silky sauce but tikka masala has a texture from the chopped and caramelized onions. The original & authentic Chicken Makhani is made with grilled Tandoori Chicken. </P>
+                <!-- <a href="#"> View recipe </a> -->
+            </div>
+
+        </div>
+   </section>
+
+    
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+    
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+    
+            <button type="button" id="send-otp">Send OTP</button>
+            <input type="text" id="otp" placeholder="Enter OTP" style="display: none;" required>
+    
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Enter your message" required></textarea>
+    
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+
+       <footer>
+        <div>
+          <p> &pcopy; 2024 Delicious Recipes</p>  
+        </div>
+       </footer> 
+    </body>
+    <script>
+
+        /* for header */
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuIcon = document.getElementById('menu-icon');
+            const menu = document.getElementById('menu');
+
+            
+            menuIcon.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+
+            
+            const menuLinks = document.querySelectorAll('#menu a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuLinks.forEach(link => link.parentElement.classList.remove('active'));
+                    link.parentElement.classList.add('active');
+                });
+            });
+        });
+
+
+
+
+
+            /* search bar */
+            document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('imageSearchForm');
+            const searchInput = document.getElementById('searchInput');
+            const queryDisplay = document.getElementById('queryDisplay');
+            
+            const examples = ["Paneer Tikka", "Butter Chicken", "Pasta Recipes", "Momos", "Chole Bhature"];
+            let index = 0;
+        
+            setInterval(() => {
+                searchInput.placeholder = `e.g., ${examples[index]}`;
+                index = (index + 1) % examples.length;
+            }, 2000); 
+        
+            
+            searchInput.addEventListener('input', () => {
+                queryDisplay.textContent = searchInput.value 
+                    ? `Searching for: "${searchInput.value}"` 
+                    : '';
+            });
+        
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+        
+                const query = searchInput.value.trim();
+        
+                if (!query) {
+                    alert("Please enter a search term!");
+                    return;
+                }
+        
+                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=isch`;
+                window.open(searchUrl, '_blank');
+            });
+        });
+
+
+
+        /* mera recipe section*/        
+        document.querySelector('.scroll-container1').addEventListener('mouseover', () => {
+            document.querySelector('.scroll-content1').style.animationPlayState = 'paused';
+        });
+
+        document.querySelector('.scroll-container1').addEventListener('mouseout', () => {
+            document.querySelector('.scroll-content1').style.animationPlayState = 'running';
+        });
+
+
+        /* riya ka recipe section */
+        document.addEventListener("DOMContentLoaded", function() {
+            const recipeCards = document.querySelectorAll(".recipe-card");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+                });
+            }, { threshold: 0.6 }); 
+
+            
+            recipeCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const sendOtpBtn = document.getElementById('send-otp');
+        const otpInput = document.getElementById('otp');
+        const contactForm = document.getElementById('contact-form');
+        let generatedOtp;
+        
+        sendOtpBtn.addEventListener('click', () => {
+            const phoneNumber = document.getElementById('phone').value;
+            if (!phoneNumber) {
+                alert("Please enter a valid phone number.");
+                return;
+            }
+
+            generatedOtp = Math.floor(1000 + Math.random() * 9000);
+            alert(`Your OTP is: ${generatedOtp} (shi shi enter krna)`);
+
+            otpInput.style.display = 'block';
+        });
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const enteredOtp = otpInput.value;
+        if (enteredOtp != generatedOtp) {
+            alert("bola tha OTP shi shi enter krna. retry kar ab !!.");
+            return;
+        }
+
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        sendMessageToEmail(name, phone, message);
+    });
+
+    function sendMessageToEmail(name, phone, message) {
+        const serviceID = "service_o7krp5l";
+        const templateID = "template_32nkj9q";
+        const userID = "BmJ9LTG8Q8wjufAxd";
+
+        const templateParams = {
+            from_name: name,
+            phone_number: phone,
+            message: message
+        };
+
+        emailjs.send(serviceID, templateID, templateParams, userID)
+            .then(() => {
+                alert("Message sent successfully!");
+                contactForm.reset();
+                otpInput.style.display = 'none';
+            })
+            .catch((err) => {
+                console.error("Failed to send email:", err);
+                alert("Thankyou for your message !");
+            });
+            }
+        });
+
+    </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("BmJ9LTG8Q8wjufAxd"); 
+        })();
+    </script>
+        
+</html>
